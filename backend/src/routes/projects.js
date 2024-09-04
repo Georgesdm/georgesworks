@@ -1,0 +1,12 @@
+const express = require('express');
+const projectController = require('../controllers/projectsControllers');
+const router = express.Router();
+const { authenticateToken } = require('../middlewares/authMiddleware');
+
+router.get('/', projectController.getAllProjects);
+router.post('/', authenticateToken, projectController.createProject);
+router.get('/:id', projectController.getOneProject);
+router.put('/:id', authenticateToken, projectController.updateProject);
+router.delete('/:id', authenticateToken, projectController.deleteProject);
+
+module.exports = router;

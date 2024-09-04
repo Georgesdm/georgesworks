@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth');
 const skillsRoutes = require('./src/routes/skills');
+const projectsRoutes = require('./src/routes/projects');
 const { mongoose } = require('./src/database/mongo'); // Connexion à MongoDB
 
 
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/skills', skillsRoutes);
-// app.use('/api/projects', projectsRoutes);
+app.use('/api/projects', projectsRoutes);
 
 // Lancement du serveur
 app.listen(PORT, () => {
