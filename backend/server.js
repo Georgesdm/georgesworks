@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const authRoutes = require('./src/routes/auth');
+const skillsRoutes = require('./src/routes/skills');
 const { mongoose } = require('./src/database/mongo'); // Connexion à MongoDB
-const path = require('path');
+
 
 const app = express();
 const PORT = 4000;
@@ -14,6 +16,11 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.json({ message: 'Server is running' });
 });
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/skills', skillsRoutes);
+// app.use('/api/projects', projectsRoutes);
 
 // Lancement du serveur
 app.listen(PORT, () => {
