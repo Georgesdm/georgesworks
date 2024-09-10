@@ -1,0 +1,19 @@
+// Couleurs principales
+$primary-color: #121313; // Noir foncé
+$secondary-color: #0061fd; // Bleu pour les actions
+$background-color: #1c1e21; // Gris clair pour le fond
+$text-color: #ffffff; // Texte principal
+$light-text-color: #ffffff; // Texte secondaire
+
+// Couleurs pour les liens et les hovers
+$link-color: $secondary-color;
+$link-hover-color: darken($secondary-color, 20%); // Bleu foncé au survol
+
+// Couleurs des boutons
+$button-bg-color: $secondary-color;
+$button-text-color: white;
+$button-hover-bg-color: darken($secondary-color, 10%);
+
+// Couleurs pour les bordures et les ombres
+$border-color: hsl(0, 0%, 25%);
+$shadow-color: rgba(0, 0, 0, 0.05);
