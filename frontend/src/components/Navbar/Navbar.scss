@@ -1,0 +1,45 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  background-color: $background-color;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li {
+      a {
+        text-decoration: none;
+        color: $text-color;
+        transition: color 0.3s ease;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin: 0 auto;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
