@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+
+.hero {
+  background-color: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .hero-content {
+    margin: 0 auto;
+    padding: 20px;
+    border: 0px solid $border-color;
+    border-radius: 20px;
+
+    h1 {
+      color: $light-text-color;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      color: $text-color;
+      text-align: left;
+    }
+  }
+
+  .social-links {
+    margin-top: 30px;
+    a {
+      margin: 0 10px;
+      color: $secondary-color;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+}
