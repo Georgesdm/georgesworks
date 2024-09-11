@@ -1,23 +1,29 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: [true, 'Le titre du projet est requis'], // Message d'erreur personnalisé
-        trim: true,
-    },
-    description: {
-        type: String,
-        required: [true, 'La description du projet est requise'],
-    },
-    imageUrl: {
-        type: String,
-        required: [true, 'L\'URL de l\'image du projet est requise'],
-        trim: true,
-        match: [/^https?:\/\/.+/, 'Veuillez entrer une URL valide'], // Validation d'URL
-    },
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  languages: {
+    type: [String], // Tableau de langages utilisés
+    required: true,
+  },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-const Project = mongoose.model('Project', projectSchema);
+const Project = mongoose.model("Project", projectSchema);
 
 module.exports = Project;
