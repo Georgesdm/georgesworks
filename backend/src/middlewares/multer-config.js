@@ -31,8 +31,7 @@ const optimizeImage = async (req, res, next) => {
   }
 
   const filename = `${Date.now()}-${req.file.originalname.split(".")[0]}.webp`;
-  const outputPath = path.join(__dirname, "../uploads", filename);
-
+  const outputPath = path.join(__dirname, "../../uploads", filename);
   try {
     // Optimiser et convertir l'image en WebP
     await sharp(req.file.buffer)

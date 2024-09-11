@@ -1,4 +1,6 @@
 const Project = require("../models/projects");
+const path = require("path");
+const fs = require("fs");
 
 exports.getAllProjects = async (req, res) => {
   try {
@@ -60,18 +62,29 @@ exports.deleteProject = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const project = await Project.findByIdAndDelete(id);
-
+    const project = await Project.findById(id);
     if (!project) {
       return res.status(404).json({ message: "Projet non trouvé" });
     }
 
-    res.status(200).json({ message: "Projet supprimé avec succès" });
+    const imagePath = path.join(__dirname, "..", project.imageUrl);
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression de l'image:", err);
+        return res
+          .status(500)
+          .json({ message: "Erreur lors de la suppression du projet" });
+      }
+
+      console.log("Image supprimée avec succès:", imagePath);
+    });
+
+    // Supprimer le projet de la base de données
+    await Project.findByIdAndDelete(id);
+    res.status(204).end();
   } catch (error) {
-    console.error("Erreur lors de la suppression du projet :", error);
-    res
-      .status(500)
-      .json({ message: "Erreur lors de la suppression du projet" });
+    console.error("Erreur lors de la suppression du projet:", error);
+    res.status(500).json({ message: "Erreur interne du serveur" });
   }
 };
 
