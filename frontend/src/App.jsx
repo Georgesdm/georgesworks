@@ -1,26 +1,30 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import Projects from "./components/Projects/Projects";
-import Contact from "./components/Contact/Contact";
-import Stats from "./components/Stats/Stats";
-import Skills from "./components/Skills/Skills";
-import Footer from "./components/Footer/Footer";
-import About from "./components/About/About";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import ErrorPage from "./pages/ErrorPage";
+
+import PrivateRoute from "./components/PrivateRoute";
+const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Projects />
-      <Skills />
-      <About />
-      <Stats />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
