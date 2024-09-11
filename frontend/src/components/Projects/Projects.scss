@@ -1,0 +1,69 @@
+@import "../../styles/variables.scss";
+
+.projects {
+  padding: 10px 0px;
+  background-color: $background-color;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px;
+
+  h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: $light-text-color;
+    text-align: center;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap; // Les cartes passent à la ligne si nécessaire
+    justify-content: center; // Centre les cartes
+    gap: 20px; // Espacement entre les cartes
+  }
+
+  .project-card {
+    padding: 10px;
+    width: calc(50% - 20px); // Deux cartes par ligne sur desktop
+    border: 1px solid $border-color; // Bordure de 1px pour plus de compatibilité
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.9s ease;
+
+    &:hover {
+      background-color: $primary-color; // Changement de couleur de fond au survol
+    }
+
+    img {
+      border-radius: 20px;
+      margin: 0 auto;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: $text-color;
+    }
+
+    .project-tech {
+      margin-top: 10px;
+
+      .tech-badge {
+        background-color: $secondary-color;
+        color: $text-color;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin-right: 5px;
+        font-size: 12px;
+        text-transform: uppercase;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
