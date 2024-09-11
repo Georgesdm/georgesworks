@@ -1,0 +1,38 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  background-color: $background-color;
+  padding: 20px 0;
+  text-align: center;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: $text-color;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: $text-color;
+    }
+
+    .social-links {
+      margin-top: 10px;
+      a {
+        margin: 0 10px;
+        color: $text-color;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+
+        i {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
