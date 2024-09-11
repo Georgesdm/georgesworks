@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+
+.about-section {
+  padding: 10px 0px;
+  background-color: $background-color;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  border-left: 3px solid #007bff;
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-date {
+  position: absolute;
+  left: -75px;
+  top: 0;
+  font-weight: bold;
+  font-size: 16px;
+  color: $text-color;
+}
+
+.timeline-content {
+  border: 1px solid $border-color;
+  border-radius: 20px;
+  box-sizing: border-box;
+  transition: background-color 0.9s ease;
+  padding: 15px 20px;
+  position: relative;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+h2,
+h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: $light-text-color;
+  text-align: left;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
