@@ -18,15 +18,18 @@ const Hero = () => {
           >
             <i className="fab fa-github"></i> GitHub
           </a>
-          <a href="/cv.pdf" download>
-            <i className="fas fa-file"></i> CV
-          </a>
           <a
             href="https://www.linkedin.com/in/Georgesdm"
             target="_blank"
             rel="noopener noreferrer"
           >
             <i className="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="/cv.pdf" download>
+            <i className="fas fa-file"></i> CV
+          </a>
+          <a href="mailto:votre-email@example.com">
+            <i className="fas fa-envelope"></i> Email
           </a>
         </div>
       </div>

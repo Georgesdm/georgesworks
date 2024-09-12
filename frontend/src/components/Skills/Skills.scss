@@ -2,7 +2,6 @@
 
 .skills-section {
   padding: 10px 0px;
-  background-color: $background-color;
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
@@ -32,9 +31,11 @@
 
     .skill-icon {
       transition: transform 0.3s ease;
+      filter: brightness(70%);
 
       &:hover {
         transform: translateY(-5px);
+        filter: brightness(100%);
       }
     }
     p {
