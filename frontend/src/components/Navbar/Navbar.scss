@@ -1,7 +1,6 @@
 @import "../../styles/variables.scss";
 
 .navbar {
-  background-color: $background-color;
   width: 100%;
   padding: 20px 0;
   box-sizing: border-box;
@@ -37,7 +36,37 @@
         margin: 0 auto;
 
         &:hover {
-          color: $secondary-color;
+          color: $link-hover-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .container {
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 0;
+
+      li {
+        a {
+          padding: 10px 20px;
+          border-radius: 5px;
+          background-color: $secondary-color;
+          color: $light-text-color;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: $button-hover-bg-color;
+          }
         }
       }
     }

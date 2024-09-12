@@ -2,15 +2,11 @@
 
 .dashboard {
   padding: 10px 0px;
-  background-color: $background-color;
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
   box-sizing: border-box;
   padding: 20px;
-
-  .backHome {
-  }
 
   h1 {
     font-size: 16px;
@@ -33,7 +29,7 @@
       color: white;
       padding: 10px 20px;
       border: none;
-      border-radius: 20px;
+      border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s ease;
@@ -70,12 +66,16 @@
   }
 }
 
-.manage-projects {
-  max-width: 1200px;
+.manage-projects,
+.manage-skills {
+  padding: 10px 0px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 15px;
-  background-color: $background-color; // Couleur de fond claire pour la section
-  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 20px;
 
   h2 {
     font-size: 16px;
@@ -88,10 +88,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
     margin-bottom: 40px;
 
     input[type="text"],
@@ -103,6 +101,7 @@
       width: 100%;
       box-sizing: border-box;
       transition: border-color 0.3s ease;
+      background-color: #1b1b1b;
 
       &:focus {
         border-color: #007bff;
@@ -134,14 +133,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #fff;
       padding: 15px 20px;
       margin-bottom: 10px;
       border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border: 1px solid $border-color;
+      color: $text-color;
+      transition: background-color 0.9s ease;
+      background-color: #1b1b1b;
 
       &:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: $primary-color;
       }
 
       button {
