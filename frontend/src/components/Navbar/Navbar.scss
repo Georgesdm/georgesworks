@@ -59,14 +59,7 @@
       li {
         a {
           padding: 10px 20px;
-          border-radius: 5px;
-          background-color: $secondary-color;
           color: $light-text-color;
-          transition: background-color 0.3s ease;
-
-          &:hover {
-            background-color: $button-hover-bg-color;
-          }
         }
       }
     }
