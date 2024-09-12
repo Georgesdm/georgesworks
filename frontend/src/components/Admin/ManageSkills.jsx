@@ -52,18 +52,21 @@ const ManageSkills = () => {
           placeholder="Nom"
           value={newSkill.name}
           onChange={(e) => setNewSkill({ ...newSkill, name: e.target.value })}
+          required
         />
         <input
           type="text"
           placeholder="Icône"
           value={newSkill.icon}
           onChange={(e) => setNewSkill({ ...newSkill, icon: e.target.value })}
+          required
         />
         <input
           type="text"
           placeholder="Couleur"
           value={newSkill.color}
           onChange={(e) => setNewSkill({ ...newSkill, color: e.target.value })}
+          required
         />
         <button type="submit">Ajouter</button>
       </form>
