@@ -25,22 +25,17 @@
     margin-bottom: 40px;
 
     button {
-      background-color: $button-bg-color;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
+      background-color: #1b1b1b;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 5%;
       cursor: pointer;
       font-size: 16px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.9s ease;
+      color: $text-color;
 
       &:hover {
-        background-color: $button-hover-bg-color;
-      }
-
-      &.active {
-        background-color: darken($secondary-color, 10%);
-        cursor: default;
+        background-color: $primary-color;
       }
     }
   }
@@ -51,16 +46,17 @@
     margin-bottom: 25px;
 
     button {
-      background-color: $button-bg-color;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      background-color: #1b1b1b;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 5%;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-size: 16px;
+      transition: background-color 0.9s ease;
+      color: $text-color;
 
       &:hover {
-        background-color: darken($secondary-color, 10%);
+        background-color: $primary-color;
       }
     }
   }
@@ -95,32 +91,32 @@
     input[type="text"],
     input[type="file"] {
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid $border-color;
       border-radius: 5px;
       font-size: 1rem;
       width: 100%;
       box-sizing: border-box;
       transition: border-color 0.3s ease;
       background-color: #1b1b1b;
+      color: $text-color;
 
       &:focus {
-        border-color: #007bff;
+        border-color: $text-color;
         outline: none;
       }
     }
 
     button {
-      padding: 12px;
-      font-size: 1.1rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
+      border: 1px solid $border-color;
       border-radius: 5px;
+      padding: 10px;
+      transition: background-color 0.9s ease;
+      background-color: #1b1b1b;
+      color: $text-color;
       cursor: pointer;
-      transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: $primary-color;
       }
     }
   }

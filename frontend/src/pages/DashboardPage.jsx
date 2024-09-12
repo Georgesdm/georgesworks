@@ -4,7 +4,7 @@ import ManageProjects from "../components/Admin/ManageProjects";
 import ManageSkills from "../components/Admin/ManageSkills";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const DashboardPage = () => {
   const [activeTab, setActiveTab] = useState("skills");
