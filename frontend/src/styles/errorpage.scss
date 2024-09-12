@@ -1,0 +1,40 @@
+@import "./variables.scss";
+
+.error-page {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.error-content {
+  max-width: 600px;
+  padding: 20px;
+  gap: 0px;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-size: 8rem;
+    color: $text-color;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.back-home-btn {
+  background-color: #1b1b1b;
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.9s ease;
+  color: $text-color;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
