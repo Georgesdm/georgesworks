@@ -9,7 +9,6 @@ const ManageProjects = () => {
     image: null,
   });
 
-  // Récupérer les projets existants
   useEffect(() => {
     const fetchProjects = async () => {
       try {
@@ -78,7 +77,7 @@ const ManageProjects = () => {
 
   return (
     <div className="manage-projects">
-      <h2>Gérer les Projets</h2>
+      <h2>Ajouter un Projet</h2>
 
       <form onSubmit={addProject}>
         <input
