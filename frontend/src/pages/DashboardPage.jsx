@@ -3,7 +3,7 @@ import "../styles/dashboard.scss";
 import ManageProjects from "../components/Admin/ManageProjects";
 import ManageSkills from "../components/Admin/ManageSkills";
 import { useNavigate } from "react-router-dom";
-
+import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 const DashboardPage = () => {
@@ -26,24 +26,28 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="dashboard">
-      <div className="backHome">
-        <a href="/">Retour au site</a>
+    <>
+      <Navbar />
+      <div className="dashboard">
+        <div className="backHome">
+          <a href="/">Retour au site</a>
+        </div>
+        <h1>Tableau de bord Administrateur</h1>
+        <div className="tabs">
+          <button onClick={() => setActiveTab("skills")}>
+            Gérer les Compétences
+          </button>
+          <button onClick={() => setActiveTab("projects")}>
+            Gérer les Projets
+          </button>
+        </div>
+        <div className="content">{renderActiveTab()}</div>
+        <div className="logout">
+          <button onClick={handleLogout}>Déconnexion</button>
+        </div>
       </div>
-      <h1>Tableau de bord Administrateur</h1>
-      <div className="tabs">
-        <button onClick={() => setActiveTab("skills")}>
-          Gérer les Compétences
-        </button>
-        <button onClick={() => setActiveTab("projects")}>
-          Gérer les Projets
-        </button>
-      </div>
-      <div className="content">{renderActiveTab()}</div>
-      <div className="logout">
-        <button onClick={handleLogout}>Déconnexion</button>
-      </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
