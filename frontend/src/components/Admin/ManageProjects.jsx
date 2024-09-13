@@ -7,6 +7,7 @@ const ManageProjects = () => {
     description: "",
     languages: "",
     image: null,
+    link: "",
   });
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const ManageProjects = () => {
     formData.append("description", newProject.description);
     formData.append("languages", newProject.languages);
     formData.append("image", newProject.image);
+    formData.append("link", newProject.link);
 
     const response = await fetch("http://localhost:4000/api/projects", {
       method: "POST",
@@ -56,7 +58,13 @@ const ManageProjects = () => {
 
     const data = await response.json();
     setProjects([...projects, data.project]); // Ajouter le nouveau projet à la liste des projets
-    setNewProject({ title: "", description: "", languages: "", image: null }); // Réinitialiser le formulaire
+    setNewProject({
+      title: "",
+      description: "",
+      languages: "",
+      image: null,
+      link: "",
+    }); // Réinitialiser le formulaire
   };
 
   const deleteProject = async (projectId) => {
@@ -101,6 +109,14 @@ const ManageProjects = () => {
           name="languages"
           placeholder="Langages utilisés"
           value={newProject.languages}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="link"
+          placeholder="GitHub Link"
+          value={newProject.link}
           onChange={handleInputChange}
           required
         />

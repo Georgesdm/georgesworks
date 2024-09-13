@@ -10,13 +10,17 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  languages: {
-    type: [String], // Tableau de langages utilisés
-    required: true,
-  },
   imageUrl: {
     type: String,
     required: true,
+  },
+  languages: {
+    type: [String],
+    required: true,
+  },
+  link: {
+    type: String,
+    required: false,
   },
   dateCreated: {
     type: Date,

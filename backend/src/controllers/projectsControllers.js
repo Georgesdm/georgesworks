@@ -13,7 +13,7 @@ exports.getAllProjects = async (req, res) => {
 };
 
 exports.createProject = async (req, res) => {
-  const { title, description, languages } = req.body;
+  const { title, description, languages, link } = req.body;
 
   if (!title || !description || !languages || !req.body.imageUrl) {
     return res.status(400).json({ message: "Tous les champs sont requis." });
@@ -25,6 +25,7 @@ exports.createProject = async (req, res) => {
       description,
       languages: languages.split(","),
       imageUrl: req.body.imageUrl,
+      link,
     });
 
     await newProject.save();

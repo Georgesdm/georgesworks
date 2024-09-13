@@ -29,13 +29,25 @@ const Projects = () => {
               src={`http://localhost:4000${project.imageUrl}`}
               alt={project.title}
             />
+
             <div className="project-tech">
               {project.languages.map((language, index) => (
                 <span key={index} className="tech-badge">
                   {language}
                 </span>
               ))}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tech-badge"
+                >
+                  <i className="fab fa-github"></i> Lien{" "}
+                </a>
+              )}
             </div>
+
             <h3>{project.title}</h3>
             <p>{project.description}</p>
           </div>
