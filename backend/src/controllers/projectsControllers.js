@@ -68,7 +68,7 @@ exports.deleteProject = async (req, res) => {
       return res.status(404).json({ message: "Projet non trouvé" });
     }
 
-    const imagePath = path.join(__dirname, "..", project.imageUrl);
+    const imagePath = path.join(__dirname, "../../", project.imageUrl);
     fs.unlink(imagePath, (err) => {
       if (err) {
         console.error("Erreur lors de la suppression de l'image:", err);
