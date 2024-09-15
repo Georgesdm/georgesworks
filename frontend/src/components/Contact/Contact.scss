@@ -16,7 +16,7 @@
 
     .btn {
       border: 1px solid $border-color;
-      border-radius: 5px;
+      border-radius: 5%;
       padding: 10px;
       transition: background-color 0.9s ease;
       background-color: $background-color;
@@ -28,7 +28,8 @@
     a {
       margin: 0 10px;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 14px;
+      text-transform: uppercase;
       i {
         margin-right: 5px;
       }

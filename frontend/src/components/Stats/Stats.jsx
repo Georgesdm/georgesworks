@@ -4,40 +4,36 @@ import "./Stats.scss";
 const Stats = () => {
   const [stats, setStats] = useState({
     publicRepos: 0,
-    lastUpdated: "", // Date de dernière mise à jour
+    lastUpdated: "",
     totalCommits: 0,
   });
 
   useEffect(() => {
     const fetchGitHubStats = async () => {
       try {
-        const username = "georgesdm"; // Remplacez par votre nom d'utilisateur GitHub
+        const username = "georgesdm"; // Replace with your GitHub username
+        const apiBaseUrl = "https://api.github.com";
 
-        // Récupérer les infos de l'utilisateur
-        const userResponse = await fetch(
-          `https://api.github.com/users/${username}`
-        );
-        const userData = await userResponse.json();
+        const [userData, reposData] = await Promise.all([
+          fetch(`${apiBaseUrl}/users/${username}`).then((res) => res.json()),
+          fetch(`${apiBaseUrl}/users/${username}/repos`).then((res) =>
+            res.json()
+          ),
+        ]);
 
-        // Récupérer la liste des dépôts publics
-        const reposResponse = await fetch(userData.repos_url);
-        const reposData = await reposResponse.json();
-
-        // Variables pour stocker les commits et la date de dernière mise à jour
         let totalCommits = 0;
         let latestUpdateDate = "";
 
-        // Parcourir chaque dépôt
+        // Process repos
         await Promise.all(
           reposData.map(async (repo) => {
-            // Récupérer le nombre de commits pour chaque dépôt
-            const commitsResponse = await fetch(
-              repo.commits_url.replace("{/sha}", "")
-            );
-            const commitsData = await commitsResponse.json();
-            totalCommits += commitsData.length;
+            const commitsData = await fetch(
+              `${apiBaseUrl}/repos/${username}/${repo.name}/commits?per_page=1`
+            ).then((res) => res.headers.get("Link"));
 
-            // Vérifier si la date de dernière mise à jour est plus récente que la précédente
+            const match = commitsData?.match(/page=(\d+)>; rel="last"/);
+            totalCommits += match ? parseInt(match[1], 10) : 0;
+
             if (
               !latestUpdateDate ||
               new Date(repo.updated_at) > new Date(latestUpdateDate)
@@ -47,17 +43,13 @@ const Stats = () => {
           })
         );
 
-        // Mettre à jour les stats avec la dernière mise à jour et les commits
         setStats({
           publicRepos: userData.public_repos,
           lastUpdated: latestUpdateDate,
           totalCommits,
         });
       } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des données GitHub",
-          error
-        );
+        console.error("Error fetching GitHub data", error);
       }
     };
 
