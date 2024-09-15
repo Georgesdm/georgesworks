@@ -13,23 +13,44 @@ const Stats = () => {
       try {
         const username = "georgesdm";
         const apiBaseUrl = "https://api.github.com";
-        const token = process.env.REACT_APP_GITHUB_TOKEN;
+        const token = import.meta.env.VITE_GITHUB_TOKEN;
+
+        console.log("GitHub Token:", token);
 
         const headers = {
           Authorization: `token ${token}`,
+          Accept: "application/vnd.github.v3+json",
         };
 
+        console.log("Request headers:", headers);
+
+        const userUrl = `${apiBaseUrl}/users/${username}`;
+        const reposUrl = `${apiBaseUrl}/users/${username}/repos?per_page=100`;
+
+        console.log("User URL:", userUrl);
+        console.log("Repos URL:", reposUrl);
+
+        const [userResponse, reposResponse] = await Promise.all([
+          fetch(userUrl, { headers }),
+          fetch(reposUrl, { headers }),
+        ]);
+
+        console.log("User response status:", userResponse.status);
+        console.log("Repos response status:", reposResponse.status);
+
+        if (!userResponse.ok || !reposResponse.ok) {
+          const userText = await userResponse.text();
+          const reposText = await reposResponse.text();
+          console.log("User response body:", userText);
+          console.log("Repos response body:", reposText);
+          throw new Error(
+            `HTTP error! status: ${userResponse.status}, ${reposResponse.status}`
+          );
+        }
+
         const [userData, reposData] = await Promise.all([
-          fetch(`${apiBaseUrl}/users/${username}`, { headers }).then((res) => {
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-            return res.json();
-          }),
-          fetch(`${apiBaseUrl}/users/${username}/repos?per_page=100`, {
-            headers,
-          }).then((res) => {
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-            return res.json();
-          }),
+          userResponse.json(),
+          reposResponse.json(),
         ]);
 
         let totalCommits = 0;
@@ -71,9 +92,9 @@ const Stats = () => {
       } catch (error) {
         console.error("Error fetching GitHub data", error);
         setStats({
-          publicRepos: "N/A",
-          lastUpdated: "N/A",
-          totalCommits: "N/A",
+          publicRepos: "Erreur",
+          lastUpdated: "Erreur",
+          totalCommits: "Erreur",
         });
       }
     };
