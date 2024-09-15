@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Projects.scss";
-import { useState, useEffect } from "react";
+import { fetchProjects } from "../../api/api";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const loadProjects = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/projects");
-        const data = await response.json();
-        setProjects(data); // Mettre à jour l'état avec les projets récupérés
+        const data = await fetchProjects();
+        setProjects(data);
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
     };
 
-    fetchProjects();
+    loadProjects();
   }, []);
 
   return (

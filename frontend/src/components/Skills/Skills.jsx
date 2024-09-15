@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Brands from "@fortawesome/free-brands-svg-icons"; // Importer toutes les icônes
+import { fetchSkills } from "../../api/api";
 import "./Skills.scss";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    const fetchSkills = async () => {
+    const loadSkills = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/skills");
-        const data = await response.json();
-        setSkills(data); // Stocker les compétences récupérées dans l'état
+        const data = await fetchSkills();
+        setSkills(data); // Store the retrieved skills in the state
       } catch (error) {
         console.error("Erreur lors de la récupération des compétences:", error);
       }
     };
 
-    fetchSkills();
+    loadSkills();
   }, []);
 
   // Fonction pour obtenir l'icône correspondante

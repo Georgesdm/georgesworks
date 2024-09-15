@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { fetchProjects, addProject, deleteProject } from "../../api/api";
 
 const ManageProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -11,21 +12,16 @@ const ManageProjects = () => {
   });
 
   useEffect(() => {
-    const fetchProjects = async () => {
+    const loadProjects = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/projects", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        const data = await response.json();
+        const data = await fetchProjects();
         setProjects(data);
       } catch (error) {
         console.error("Erreur lors de la récupération des projets :", error);
       }
     };
 
-    fetchProjects();
+    loadProjects();
   }, []);
 
   // Gérer les changements dans les inputs
@@ -39,7 +35,7 @@ const ManageProjects = () => {
   };
 
   // Ajouter un nouveau projet avec l'upload d'image
-  const addProject = async (e) => {
+  const handleAddProject = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("title", newProject.title);
@@ -48,35 +44,24 @@ const ManageProjects = () => {
     formData.append("image", newProject.image);
     formData.append("link", newProject.link);
 
-    const response = await fetch("http://localhost:4000/api/projects", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: formData, // Envoyer le projet et l'image
-    });
-
-    const data = await response.json();
-    setProjects([...projects, data.project]); // Ajouter le nouveau projet à la liste des projets
-    setNewProject({
-      title: "",
-      description: "",
-      languages: "",
-      image: null,
-      link: "",
-    }); // Réinitialiser le formulaire
+    try {
+      const data = await addProject(formData);
+      setProjects([...projects, data.project]);
+      setNewProject({
+        title: "",
+        description: "",
+        languages: "",
+        image: null,
+        link: "",
+      });
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du projet:", error);
+    }
   };
 
-  const deleteProject = async (projectId) => {
+  const handleDeleteProject = async (projectId) => {
     try {
-      await fetch(`http://localhost:4000/api/projects/${projectId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      // Mettre à jour l'état pour retirer le projet supprimé
+      await deleteProject(projectId);
       setProjects(projects.filter((project) => project._id !== projectId));
     } catch (error) {
       console.error("Erreur lors de la suppression du projet:", error);
@@ -87,7 +72,7 @@ const ManageProjects = () => {
     <div className="manage-projects">
       <h2>Ajouter un Projet</h2>
 
-      <form onSubmit={addProject}>
+      <form onSubmit={handleAddProject}>
         <input
           type="text"
           name="title"
@@ -129,7 +114,7 @@ const ManageProjects = () => {
         {projects.map((project) => (
           <li key={project._id}>
             Titre: {project.title} Ajouté le: {project.dateCreated}
-            <button onClick={() => deleteProject(project._id)}>
+            <button onClick={() => handleDeleteProject(project._id)}>
               Supprimer
             </button>
           </li>

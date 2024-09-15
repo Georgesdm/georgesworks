@@ -1,52 +1,46 @@
 import React, { useState, useEffect } from "react";
+import { fetchSkills, addSkill, deleteSkill } from "../../api/api";
 
 const ManageSkills = () => {
   const [skills, setSkills] = useState([]);
   const [newSkill, setNewSkill] = useState({ name: "", icon: "", color: "" });
 
-  // Récupérer les compétences depuis le backend
   useEffect(() => {
-    const fetchSkills = async () => {
-      const response = await fetch("http://localhost:4000/api/skills", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      const data = await response.json();
-      setSkills(data);
+    const loadSkills = async () => {
+      try {
+        const data = await fetchSkills();
+        setSkills(data);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
     };
 
-    fetchSkills();
+    loadSkills();
   }, []);
 
-  const addSkill = async () => {
-    const response = await fetch("http://localhost:4000/api/skills", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(newSkill),
-    });
-    const data = await response.json();
-    setSkills([...skills, data.skill]);
-    setNewSkill({ name: "", icon: "", color: "" });
+  const handleAddSkill = async () => {
+    try {
+      const data = await addSkill(newSkill);
+      setSkills([...skills, data.skill]);
+      setNewSkill({ name: "", icon: "", color: "" });
+    } catch (error) {
+      console.error("Error adding skill:", error);
+    }
   };
 
-  const deleteSkill = async (id) => {
-    await fetch(`http://localhost:4000/api/skills/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    setSkills(skills.filter((skill) => skill._id !== id));
+  const handleDeleteSkill = async (id) => {
+    try {
+      await deleteSkill(id);
+      setSkills(skills.filter((skill) => skill._id !== id));
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+    }
   };
 
   return (
     <div className="manage-skills">
       <h2>Ajouter une Compétence</h2>
-      <form onSubmit={addSkill}>
+      <form onSubmit={handleAddSkill}>
         <input
           type="text"
           placeholder="Nom"
@@ -76,7 +70,9 @@ const ManageSkills = () => {
         {skills.map((skill) => (
           <li key={skill._id}>
             {skill.name}
-            <button onClick={() => deleteSkill(skill._id)}>Supprimer</button>
+            <button onClick={() => handleDeleteSkill(skill._id)}>
+              Supprimer
+            </button>
           </li>
         ))}
       </ul>
