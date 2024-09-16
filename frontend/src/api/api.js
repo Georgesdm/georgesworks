@@ -60,8 +60,8 @@ export const addProject = async (formData) => {
   return response.json();
 };
 
-export const deleteProject = async (projectId) => {
-  const response = await fetch(`${API_BASE_URL}/projects/${projectId}`, {
+export const deleteProject = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -71,8 +71,6 @@ export const deleteProject = async (projectId) => {
   if (!response.ok) {
     throw new Error("Failed to delete project");
   }
-
-  return response.json();
 };
 
 export const updateProject = async (id, updatedProject) => {

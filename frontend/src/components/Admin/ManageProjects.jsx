@@ -59,10 +59,10 @@ const ManageProjects = () => {
     }
   };
 
-  const handleDeleteProject = async (projectId) => {
+  const handleDeleteProject = async (id) => {
     try {
-      await deleteProject(projectId);
-      setProjects(projects.filter((project) => project._id !== projectId));
+      await deleteProject(id);
+      setProjects(projects.filter((project) => project._id !== id));
     } catch (error) {
       console.error("Erreur lors de la suppression du projet:", error);
     }
