@@ -19,14 +19,15 @@
 
   .projects-grid {
     display: flex;
-    flex-wrap: wrap; // Les cartes passent à la ligne si nécessaire
-    justify-content: center; // Centre les cartes
-    gap: 20px; // Espacement entre les cartes
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    gap: 20px;
   }
 
   .project-card {
     padding: 10px;
-    width: calc(50% - 20px); // Deux cartes par ligne sur desktop
+    width: calc(50% - 20px);
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #1b1b1b;
