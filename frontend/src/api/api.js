@@ -1,8 +1,9 @@
-const API_BASE_URL = "http://localhost:4000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
 const GITHUB_API_BASE_URL = "https://api.github.com";
 
 export const fetchProjects = async () => {
-  const response = await fetch(`${API_BASE_URL}/projects`);
+  const response = await fetch(`${API_URL}/api/projects`);
   if (!response.ok) {
     throw new Error("Failed to fetch projects");
   }
@@ -10,7 +11,7 @@ export const fetchProjects = async () => {
 };
 
 export const fetchSkills = async () => {
-  const response = await fetch(`${API_BASE_URL}/skills`);
+  const response = await fetch(`${API_URL}/api/skills`);
   if (!response.ok) {
     throw new Error("Failed to fetch skills");
   }
@@ -18,7 +19,7 @@ export const fetchSkills = async () => {
 };
 
 export const addSkill = async (newSkill) => {
-  const response = await fetch(`${API_BASE_URL}/skills`, {
+  const response = await fetch(`${API_URL}/api/skills`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +34,7 @@ export const addSkill = async (newSkill) => {
 };
 
 export const deleteSkill = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/skills/${id}`, {
+  const response = await fetch(`${API_URL}/api/skills/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -45,7 +46,7 @@ export const deleteSkill = async (id) => {
 };
 
 export const addProject = async (formData) => {
-  const response = await fetch(`${API_BASE_URL}/projects`, {
+  const response = await fetch(`${API_URL}/api/projects`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -61,7 +62,7 @@ export const addProject = async (formData) => {
 };
 
 export const deleteProject = async (id) => {
-  const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
+  const response = await fetch(`${API_URL}/api/projects/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -74,7 +75,7 @@ export const deleteProject = async (id) => {
 };
 
 export const updateProject = async (id, updatedProject) => {
-  const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
+  const response = await fetch(`${API_URL}/api/projects/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -89,7 +90,7 @@ export const updateProject = async (id, updatedProject) => {
 };
 
 export const login = async (email, password) => {
-  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+  const response = await fetch(`${API_URL}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
