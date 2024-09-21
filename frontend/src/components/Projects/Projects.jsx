@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Projects.scss";
 import { fetchProjects } from "../../api/api";
+import { API_URL } from "../../api/api";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -24,10 +25,7 @@ const Projects = () => {
       <div className="projects-grid">
         {projects.map((project) => (
           <div className="project-card" key={project._id}>
-            <img
-              src={`http://localhost:4000${project.imageUrl}`}
-              alt={project.title}
-            />
+            <img src={`${API_URL}${project.imageUrl}`} alt={project.title} />
 
             <div className="project-tech">
               {project.languages.map((language, index) => (
