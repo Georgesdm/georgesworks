@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Projects.scss";
-import { fetchProjects } from "../../api/api";
-import { API_URL } from "../../api/api";
+import { fetchProjects, API_URL } from "../../api/api";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);

@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
 const GITHUB_API_BASE_URL = "https://api.github.com";
 
