@@ -12,7 +12,11 @@ const PORT = 4000;
 
 app.use(
   cors({
-    origin: ["https://georgesworks.netlify.app", "http://localhost:5173"],
+    origin: [
+      "https://georgesworks.netlify.app",
+      "https://georges.works",
+      "http://localhost:5173",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
