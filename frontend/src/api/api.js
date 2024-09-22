@@ -1,5 +1,5 @@
-export const API_URL =
-  import.meta.env.VITE_API_URL || "https://georgesworks-back.vercel.app";
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+console.log("API_URL:", API_URL);
 
 const GITHUB_API_BASE_URL = "https://api.github.com";
 
@@ -56,7 +56,8 @@ export const addProject = async (formData) => {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to add project");
+    const errorData = await response.json();
+    throw new Error(`Failed to add project: ${errorData.message}`);
   }
 
   return response.json();
