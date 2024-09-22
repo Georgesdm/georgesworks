@@ -83,10 +83,15 @@
     }
 
     .social-links {
-      flex-direction: column;
-      max-width: 200px;
-      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
+      margin-top: 20px;
+      max-width: 100%;
+
+      .btn {
+        flex: 0 0 calc(50% - 50px); // Set width to 50% minus half of the gap
+      }
     }
   }
 }
