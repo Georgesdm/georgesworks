@@ -5,11 +5,11 @@ const Hero = () => {
   return (
     <section id="about" className="hero">
       <div className="hero-content">
-        <p>
-          Je crée des solutions web modernes, performantes et fiables, en
-          utilisant les technologies les plus récentes pour offrir une
-          expérience fluide et optimisée.
-        </p>
+        <h1>
+          Concevoir des solutions web modernes pour une
+          <span className="highlight">expérience fluide</span>
+        </h1>
+
         <div className="social-links">
           <a
             href="https://github.com/Georgesdm"
@@ -30,7 +30,7 @@ const Hero = () => {
           <a href="/cv.pdf" download className="btn">
             <i className="fas fa-file"></i> CV
           </a>
-          <a href="mailto:votre-email@example.com" className="btn">
+          <a href="mailto:georgesdmpro@gmail.com" className="btn">
             <i className="fas fa-envelope"></i> Email
           </a>
         </div>

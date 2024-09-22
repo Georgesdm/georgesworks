@@ -15,13 +15,6 @@ const About = () => {
             objectif est d'offrir des expériences utilisateurs optimisées tout
             en garantissant une qualité de code maintenable.
           </p>
-          <p>
-            Mes compétences techniques incluent, entre autres, JavaScript,
-            React, Node.js, Express, MongoDB, ainsi que les technologies HTML5
-            et CSS3. Je suis constamment à la recherche des meilleures pratiques
-            et des dernières innovations pour améliorer mes projets et apprendre
-            de nouvelles technologies.
-          </p>
         </div>
 
         <div className="about-timeline">
@@ -43,9 +36,10 @@ const About = () => {
               <div className="timeline-content">
                 <h3>2017-2024 Graphiste Freelance</h3>
                 <p>
-                  Depuis 2017, je travaille en tant que graphiste freelance,
-                  aidant mes clients à développer leur identité visuelle et à
-                  créer des supports de communication.
+                  Depuis 2017, je suis graphiste freelance, principalement dans
+                  le design d'assets pour des vêtements, du merchandising, des
+                  événements, et plus encore. Je crée des visuels qui mettent en
+                  valeur les marques de mes clients et captivent leur audience.
                 </p>
               </div>
             </div>

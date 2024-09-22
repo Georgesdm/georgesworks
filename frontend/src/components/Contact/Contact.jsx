@@ -23,7 +23,7 @@ const Contact = () => {
         >
           <i className="fab fa-linkedin"></i> LinkedIn
         </a>
-        <a href="mailto:votre-email@example.com" className="btn">
+        <a href="mailto:georgesdmpro@gmail.com" className="btn">
           <i className="fas fa-envelope"></i> Email
         </a>
       </div>

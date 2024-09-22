@@ -6,30 +6,51 @@
   margin: 0 auto;
   box-sizing: border-box;
   padding: 20px;
-
+  padding-top: 0px;
   .hero-content {
+    position: relative;
     h1 {
       color: $light-text-color;
       font-weight: bold;
-      margin-bottom: 20px;
+      line-height: 1.5;
+      text-align: left;
     }
 
     p {
-      font-size: 18px;
+      font-size: 24px;
       color: $text-color;
-      text-align: left;
+    }
+
+    .highlight {
+      position: relative;
+      z-index: 1;
+      padding: 0.2em 0.4em;
+      border-radius: 0.2em;
+
+      &::before {
+        content: "";
+        position: absolute;
+        background-color: $secondary-color;
+        left: 0.5rem;
+        top: 0;
+        bottom: 0;
+        right: 0.5rem;
+        transform: rotate(-1deg);
+        z-index: -1;
+        border-radius: 5px;
+      }
     }
   }
 
   .social-links {
-    margin-top: 30px;
+    margin-top: 50px;
     gap: 10px;
     display: flex;
     justify-content: center;
 
     .btn {
       border: 1px solid $border-color;
-      border-radius: 5%;
+      border-radius: 5px;
       padding: 10px;
       transition: background-color 0.9s ease;
       background-color: $background-color;
@@ -38,11 +59,13 @@
         background-color: $primary-color;
       }
     }
+
     a {
       margin: 0 10px;
       text-decoration: none;
       font-size: 14px;
       text-transform: uppercase;
+
       i {
         margin-right: 5px;
       }
@@ -55,10 +78,15 @@
     .hero-content {
       h1 {
         margin-top: 0px;
+        font-size: 30px;
       }
     }
-  }
-  .social-links {
-    flex-direction: column;
+
+    .social-links {
+      flex-direction: column;
+      max-width: 200px;
+      margin: 0 auto;
+      gap: 10px;
+    }
   }
 }
