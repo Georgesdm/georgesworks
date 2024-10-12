@@ -27,7 +27,12 @@ const Hero = () => {
           >
             <i className="fab fa-linkedin"></i> LinkedIn
           </a>
-          <a href="/cv.pdf" download className="btn">
+          <a
+            href="./src/assets/Dolle_Georges_1_CV_102024.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
             <i className="fas fa-file"></i> CV
           </a>
           <a href="mailto:georgesdmpro@gmail.com" className="btn">
