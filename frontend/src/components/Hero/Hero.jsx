@@ -28,7 +28,7 @@ const Hero = () => {
             <i className="fab fa-linkedin"></i> LinkedIn
           </a>
           <a
-            href="./src/assets/Dolle_Georges_1_CV_102024.pdf"
+            href="https://drive.google.com/file/d/1mldNvzG5WnDTTiUkHFu2Tm7RhgH2wShJ/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="btn"
