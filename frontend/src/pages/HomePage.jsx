@@ -15,7 +15,6 @@ const HomePage = () => {
       <Projects />
       <Skills />
       <About />
-      <Stats />
       <Contact />
       <Footer />
     </div>
