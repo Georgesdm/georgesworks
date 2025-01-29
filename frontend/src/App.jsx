@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ErrorPage from "./pages/ErrorPage";
+import GraphicsWork from "./pages/GraphicsWork";
 
 import PrivateRoute from "./components/PrivateRoute";
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/graphics" element={<GraphicsWork />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
